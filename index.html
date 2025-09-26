@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokeprueba</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    
+    <div class="splash-screen" id="splash-screen">
+        <div class="welcome-content">
+            <h1 class="welcome-content__text">¡Hola!, Bienvenido a mi pokedex</h1>
+            <img src="./pokemones.png" alt="Pikachu saludando" class="welcome-content__img"/>
+        </div>
+    </div>
+
+    <header class="header">
+        <h1 class="header__title">Mi Pokédex</h1>
+        <div class="header__buttons">
+            <button class="header__button" id="favorites-toggle">Mostrar Favoritos</button>
+            <button class="header__button header__button--exit" id="exit-button">Salir</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="list-section">
+            <h2 class="list-section__title">Explorar</h2>
+            <ul class="pokemon-list" id="pokemon-list-container">
+                <li class="pokemon-list__item">Cargando lista...</li>
+            </ul>
+        </section>
+
+        <section class="detail-section">
+            <h2 class="detail-section__title">Detalles</h2>
+            <div data-poke-card class="poke-card">
+                <form action="" onsubmit="searchPokemon(event)" class="poke-card__search-form">
+                    <input type="text" name="pokemon" autocomplete="off" placeholder="Buscar Pokémon">
+                </form>
+                <div data-poke-name class="poke-card__name">Pokedex</div>
+                <button class="poke-card__favorite-btn favorite-button" id="favorite-button" onclick="toggleFavorite()">⭐ Favorito</button>
+                <div data-poke-img-container class="img-container">
+                    <img data-poke-img class="poke-img" src="./pikachu.gif" alt="Imagen del Pokémon"/>
+                </div>
+                <div data-poke-id class="poke-card__id"></div>
+                <div data-poke-types class="poke-types"></div>
+                <div data-poke-stats class="poke-stats"></div>
+            </div>
+        </section>
+        
+    </main>
+
+    <div class="pokebola-overlay hidden" id="pokebola-overlay">
+        <img src="simple_pokeball.gif" alt="Pokebola de Carga">
+    </div>
+
+    <div class="exit-screen hidden" id="exit-screen">
+        <div class="welcome-content">
+            <h1 class="welcome-content__text">¡Muchas gracias por utilizar la pokedex!,¡Hasta la proxima!</h1>
+            <img src="./despedida-unscreen.gif" alt="Pikachu despidiéndose" class="welcome-content__img"/>
+        </div>
+    </div>
+
+    <script src="script.js" type="text/javascript" defer></script>
+</body>
+</html>
