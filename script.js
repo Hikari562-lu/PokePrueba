@@ -1,8 +1,3 @@
-// script.js
-
-// ------------------------------------------
-// SELECTORES GLOBALES
-// ------------------------------------------
 const pokeCard = document.querySelector('[data-poke-card]');
 const pokeName = document.querySelector('[data-poke-name]');
 const pokeImg = document.querySelector('[data-poke-img]');
@@ -11,7 +6,7 @@ const pokeTypes = document.querySelector('[data-poke-types]');
 const pokeStats = document.querySelector('[data-poke-stats]');
 
 const pokebolaOverlay = document.getElementById('pokebola-overlay');
-const splashScreen = document.getElementById('splash-screen'); // NUEVO: Selector de la pantalla de bienvenida
+const splashScreen = document.getElementById('splash-screen'); 
 const pokemonListContainer = document.getElementById('pokemon-list-container'); 
 const favoritesToggleBtn = document.getElementById('favorites-toggle'); 
 const favoriteButton = document.getElementById('favorite-button'); 
@@ -36,12 +31,7 @@ const typeColors = {
 };
 
 
-// ------------------------------------------
-// LÓGICA DE INICIO Y CARGA DE LA LISTA (Parte II y III)
-// ------------------------------------------
-
 document.addEventListener('DOMContentLoaded', () => {
-    // NUEVO: Oculta la pantalla de bienvenida después de 3 segundos
     setTimeout(() => {
         if (splashScreen) {
             splashScreen.classList.add('splash-screen--hidden');
@@ -87,7 +77,6 @@ function renderPokemonList(pokemonArray) {
     });
 }
 
-// Alterna entre la lista completa y la lista de favoritos
 function toggleView() {
     isShowingFavorites = !isShowingFavorites;
     const favorites = getFavorites();
@@ -95,7 +84,7 @@ function toggleView() {
     if (isShowingFavorites) {
         favoritesToggleBtn.textContent = 'Mostrar Lista Completa';
         
-        // Renderiza solo los favoritos
+       
         renderPokemonList(favorites.length > 0 ? favorites : []); 
         
         if (favorites.length === 0) {
@@ -108,10 +97,6 @@ function toggleView() {
     }
 }
 
-
-// ------------------------------------------
-// LÓGICA DE BÚSQUEDA Y RENDERIZADO
-// ------------------------------------------
 
 const searchPokemon = event => {
     event.preventDefault();
@@ -163,11 +148,6 @@ const renderPokemonData = data => {
     updateFavoriteButton(data.id);
 }
 
-
-// ------------------------------------------
-// LÓGICA DE FAVORITOS (Parte IV)
-// ------------------------------------------
-
 function getFavorites() { 
     return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; 
 }
@@ -207,10 +187,6 @@ function updateFavoriteButton(pokemonId) {
     favoriteButton.classList.toggle('poke-card__favorite-btn--is-favorite', isFavorite);
     favoriteButton.textContent = isFavorite ? '❤️ Quitar' : '⭐ Favorito';
 }
-
-// ------------------------------------------
-// FUNCIONES DE SOPORTE
-// ------------------------------------------
 
 function formatName(name) {
     return name.charAt(0).toUpperCase() + name.slice(1);
@@ -262,7 +238,6 @@ const renderNotFound = () => {
 function showExitScreen() {
     if (exitScreen) {
         exitScreen.classList.remove('hidden');
-        // Opcional: Remover el resto del contenido para asegurar que no haya clics
         document.querySelector('body').style.overflow = 'hidden';
     }
 }
